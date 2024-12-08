@@ -217,10 +217,70 @@
     <div class="bird"></div>
     <div class="turtle"></div>
 
-    <!-- Button -->
-    <button class="start-btn" onclick="alert('Welcome to the fun learning experience!')">Start</button>
-    
+    <!-- Camera Preview -->
+    <div id="camera-container">
+        <video id="video" autoplay></video>
+    </div>
+
+    <!-- Decorative Footer -->
+    <div class="grass"></div> 
+	
+	<!-- Button -->
+    <button class="start-btn" onclick="startCamera()">Start</button>
+
+    <!-- Camera Preview -->
+    <div id="camera-container">
+        <video id="video" autoplay></video>
+    </div>
+
     <!-- Decorative Footer -->
     <div class="grass"></div>
+
+    <script>
+        // Function to start the camera
+        function startCamera() {
+            // Access the camera using getUserMedia API
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    // Get the video element and set the source to the camera stream
+                    const videoElement = document.getElementById('video');
+                    videoElement.srcObject = stream;
+
+                    // Show the video element (camera preview)
+                    document.getElementById('camera-container').style.display = 'block';
+
+                    // Hide the start button
+                    document.querySelector('.start-btn').style.display = 'none';
+                })
+                .catch(function(error) {
+                    console.error('Error accessing the camera: ', error);
+                    alert('Unable to access the camera. Please make sure you have a camera and permissions are granted.');
+                });
+        }
+		
+		
+    </script>
+	<script>
+	 function startCamera() {
+            // Access the camera using getUserMedia API
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    // Get the video element and set the source to the camera stream
+                    const videoElement = document.getElementById('video');
+                    videoElement.srcObject = stream;
+
+                    // Show the video element (camera preview)
+                    document.getElementById('camera-container').style.display = 'block';
+
+                    // Hide the start button
+                    document.querySelector('.start-btn').style.display = 'none';
+                })
+                .catch(function(error) {
+                    console.error('Error accessing the camera: ', error);
+                    alert('Unable to access the camera. Please make sure you have a camera and permissions are granted.');
+                });
+        }
+		
+		</script>
 </body>
 </html>
